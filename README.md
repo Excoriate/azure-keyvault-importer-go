@@ -20,6 +20,7 @@ LOCATION="West Europe"
  ```
 
 All these fields are **mandatory** — ensure they are added properly and corresponds to valid Azure values.
+
 * `importer/secrets.json`: This file holds the `keyvault` name and the `secrets` (names and values) that will be created in AzurekeyVault. Please, use the `secrets_template.json` template as a starting point.
 
 ```json
@@ -38,7 +39,8 @@ All these fields are **mandatory** — ensure they are added properly and corres
     }
   ]
 }
-* ```
+```
+
 This configuration aims to be as explicit as possible, which means it'll fail whether there's an invalid configuration or there are some secret fields detected as empty.
 **Note** : The `IsOverrideAllowed` isn't working yet. In Azure KeyVault, a deleted secret is actually soft-deleted. A purge operation need to take place to definitively erase it.
 
@@ -47,6 +49,17 @@ This configuration aims to be as explicit as possible, which means it'll fail wh
 * Ensure that you're pointing to the correct subscription before execute this application. E.g.: `az account set --subscription <my-subscription-id>`
 * In the very first execution, it'll create a `service principal` with minimal permissions to operate against the target azure KeyVault.
 * If there's a `sp-creds.json` file detected, it'll be loaded instead of creating a new `service principal`. This file will be placed in the `importer/` folder.
+sp-creds.json file example:
+```json
+{
+ "appId": "....",
+ "displayName": "....",
+ "name": "....",
+ "password": "....",
+ "tenant": "...."
+}
+
+```
 
 ---
 ## Run
