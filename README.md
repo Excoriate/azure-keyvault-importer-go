@@ -17,7 +17,8 @@ TENANT_ID=555555-7dd4-8v3a-b87d-7777777777
 RESOURCE_GROUP_NAME=rg-name-in-azure
 SOURCE_SECRETS_PATH="importer/secrets.json"
 LOCATION="West Europe"
-* ```
+ ```
+
 All these fields are **mandatory** — ensure they are added properly and corresponds to valid Azure values.
 * `importer/secrets.json`: This file holds the `keyvault` name and the `secrets` (names and values) that will be created in AzurekeyVault. Please, use the `secrets_template.json` template as a starting point.
 
@@ -44,6 +45,8 @@ This configuration aims to be as explicit as possible, which means it'll fail wh
 ### Azure Configuration
 * Ensure that a valid `az login` has been performed without errors. 
 * Ensure that you're pointing to the correct subscription before execute this application. E.g.: `az account set --subscription <my-subscription-id>`
+* In the very first execution, it'll create a `service principal` with minimal permissions to operate against the target azure KeyVault.
+* If there's a `sp-creds.json` file detected, it'll be loaded instead of creating a new `service principal`. This file will be placed in the `importer/` folder.
 
 ---
 ## Run
