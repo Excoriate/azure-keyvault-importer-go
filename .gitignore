@@ -1,0 +1,16 @@
+
+chilecli
+vendor
+dist
+.vscode
+.idea/
+.terraform/
+release_log.yml
+.DS_Store
+
+# Generated files
+importer/sp-creds.json
+importer/secrets_example.json
+import.example.config
+
+
